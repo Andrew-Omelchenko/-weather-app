@@ -1,5 +1,5 @@
 var key = "c7dc2200f66725961863fb901fd1e553";
-var apiLink = "http://api.openweathermap.org/data/2.5/weather?";
+var apiLink = "https://api.openweathermap.org/data/2.5/weather?";
 
 
 // Weather class
