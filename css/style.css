@@ -1,0 +1,27 @@
+/* basic styles with flex */
+
+.title {
+	text-align: center;
+}
+
+.flex-container {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: 299px) {
+	.flex-container, .title {
+		width: 300px;
+		flex-wrap: none;
+	}
+}
+
+@media screen and (min-width: 300px) {
+	.flex-container, .title {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
