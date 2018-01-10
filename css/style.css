@@ -1,10 +1,6 @@
 /* basic styles with flex */
 
-.title {
-	text-align: center;
-}
-
-.controls {
+.title, .controls {
 	width: 100%;
 	text-align: center;
 }
@@ -17,15 +13,20 @@
 	justify-content: space-between;
 }
 
+.left-panel, .right-panel {
+	width: 50%;
+	text-align: center;
+}
+
 @media screen and (max-width: 299px) {
-	.flex-container, .title {
+	.flex-container, .title, .controls {
 		width: 300px;
 		flex-wrap: none;
 	}
 }
 
 @media screen and (min-width: 300px) {
-	.flex-container, .title {
+	.flex-container, .title, .controls {
 		width: 300px;
 		margin-left: auto;
 		margin-right: auto;

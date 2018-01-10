@@ -12,15 +12,17 @@
 		<header>
 			<h1 class="title">Weather App</h1>
 			<div class="controls">
-			<button id="us-customary-units">&deg;F, mph</button>
-			<button id="si-base-units">&deg;C, m/s</button>
-			<hr />
-		</div>
+				<select id="base-units">
+					<option value="si-base-units">&deg;C, m/s</option>
+  					<option value="us-customary-units">&deg;F, mph</option>
+				</select>
+				<hr />
+			</div>
 		</header>
 		<div class="flex-container">
 			<div class="left-panel">
 				<div class="temperature">
-					<span id="temperature">0</span>&deg;temperature-units
+					<span id="temperature">0</span>&deg;<span id="temperature-units">temperature-units</span>
 				</div>
 				<div class="location">
 					<span id="location">location</span>
@@ -34,7 +36,7 @@
 						<span id="humidity">0</span>%
 					</div>
 					<div class="wind">
-						<span id="velocity">0</span>velocity-units
+						<span id="velocity">0</span><span id="velocity-units">velocity-units</span>
 						<span id="direction">direction</span>
 					</div>
 				</div>
