@@ -11,9 +11,34 @@
 	<div class="content">
 		<header>
 			<h1 class="title">Weather App</h1>
+			<div class="controls">
+			<button id="us-customary-units">&deg;F, mph</button>
+			<button id="si-base-units">&deg;C, m/s</button>
+			<hr />
+		</div>
 		</header>
 		<div class="flex-container">
-			<!-- Insert code here -->
+			<div class="left-panel">
+				<div class="temperature">
+					<span id="temperature">0</span>&deg;temperature-units
+				</div>
+				<div class="location">
+					<span id="location">location</span>
+				</div>
+			</div>
+			<div class="right-panel">
+				<div class="right-top">...image...</div>
+				<div class="right-bottom">
+					<div class="humidity">
+						...image...
+						<span id="humidity">0</span>%
+					</div>
+					<div class="wind">
+						<span id="velocity">0</span>velocity-units
+						<span id="direction">direction</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

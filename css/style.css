@@ -4,7 +4,13 @@
 	text-align: center;
 }
 
+.controls {
+	width: 100%;
+	text-align: center;
+}
+
 .flex-container {
+	text-align: center;
 	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
