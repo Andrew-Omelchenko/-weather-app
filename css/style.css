@@ -1,4 +1,8 @@
 /* basic styles with flex */
+body {
+	font-family: sans-serif;
+	font-stretch: ultra-condensed;
+}
 
 .title, .controls {
 	width: 100%;
@@ -6,6 +10,7 @@
 }
 
 .flex-container {
+	margin-top: 21px;
 	text-align: center;
 	width: 100%;
 	display: flex;
@@ -30,6 +35,16 @@
 	width: 100%;
 	float: right;
 	text-align: right;
+	font-size: 24px;
+}
+
+.temperature {
+	font-size: 42px;
+}
+
+.humidity-icon {
+	width: 24px;
+	height: 24px;
 }
 
 @media screen and (max-width: 299px) {
