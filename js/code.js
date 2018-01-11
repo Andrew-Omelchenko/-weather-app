@@ -66,12 +66,12 @@ function getWeather(loc) {
 	xmlhttp.send();
 };
 function updateScreen(screen, weather) {
-	screen.temperatureId.innerHTML = weather.temperature;
+	screen.temperatureId.innerHTML = Math.round(weather.temperature);
 	screen.temperatureUnitsId.innerHTML = screen.temperatureUnits;
 	screen.locationId.innerHTML = weather.location;
 	screen.iconId.src = iconLink + weather.weatherState + ".png";
 	screen.humidityId.innerHTML = weather.humidity;
-	screen.velocityId.innerHTML = weather.velocity;
+	screen.velocityId.innerHTML = Math.round(weather.velocity);
 	screen.velocityUnitsId.innerHTML = screen.velocityUnits;
 	screen.directionId.innerHTML = weather.direction;
 };
@@ -79,14 +79,31 @@ function switchUnits(screen, units) {
 	if (screen.currentUnits == units) return;
 	if (units == "si-base-units") {
 		screen.currentUnits = "si-base-units";
+		screen.temperatureId.innerHTML = toCelsius(screen.temperatureId.innerHTML);
 		screen.temperatureUnits = " C";
+		screen.velocityId.innerHTML = toMs(screen.velocityId.innerHTML);
 		screen.velocityUnits = " m/s";
 	} else {
 		screen.currentUnits = "us-customary-units";
+		screen.temperatureId.innerHTML = toFahrenheit(screen.temperatureId.innerHTML);
 		screen.temperatureUnits = " F";
+		screen.velocityId.innerHTML = toMph(screen.velocityId.innerHTML);
 		screen.velocityUnits = " mph";
+
 	}
 	// TODO: update screen
 	screen.temperatureUnitsId.innerHTML = screen.temperatureUnits;
 	screen.velocityUnitsId.innerHTML = screen.velocityUnits;
+};
+function toFahrenheit(value) {
+	return Math.round(value * 1.8 + 32);
+};
+function toCelsius(value) {
+	return Math.round((value - 32) / 1.8);
+};
+function toMph(value) {
+	return Math.round(value * 2.25);
+};
+function toMs(value) {
+	return Math.round(value / 2.25);
 };
