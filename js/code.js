@@ -11,9 +11,10 @@ var Weather = function() {
 	this.weatherState = "10d";
 	this.temperature = 0;
 	this.location = "London";
+	this.description = "none";
 	this.humidity = 0;
 	this.velocity = 0;
-	this.direction = "N";
+	this.direction = 0;
 };
 
 // Screen class
@@ -26,6 +27,7 @@ var Screen = function(doc) {
 	this.temperatureUnitsId = doc.getElementById("temperature-units");
 	this.locationId = doc.getElementById("location");
 	this.iconId = doc.getElementById("icon");
+	this.descriptionId = doc.getElementById("description");
 	this.humidityId = doc.getElementById("humidity");
 	this.velocityId = doc.getElementById("velocity");
 	this.velocityUnitsId = doc.getElementById("velocity-units");
@@ -49,14 +51,20 @@ function getWeather(loc) {
 	var url = apiLink + "q=" + loc + "&units=metric&APPID=" + key;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", url, true);
+	var messageShown = false;
 	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.status == 404 && !messageShown) {
+			alert("City not found!")
+			messageShown = true;
+			return;
+		}
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var data = JSON.parse(xmlhttp.responseText);
-			// console.log(data);
 			var weatherObject = new Weather();
 			weatherObject.weatherState = data.weather[0].icon;
 			weatherObject.temperature = data.main.temp;
 			weatherObject.location = data.name;
+			weatherObject.description = data.weather[0].description;
 			weatherObject.humidity = data.main.humidity;
 			weatherObject.velocity = data.wind.speed;
 			weatherObject.direction = data.wind.deg;
@@ -70,6 +78,7 @@ function updateScreen(screen, weather) {
 	screen.temperatureUnitsId.innerHTML = screen.temperatureUnits;
 	screen.locationId.innerHTML = weather.location;
 	screen.iconId.src = iconLink + weather.weatherState + ".png";
+	screen.descriptionId.innerHTML = weather.description;
 	screen.humidityId.innerHTML = weather.humidity;
 	screen.velocityId.innerHTML = Math.round(weather.velocity);
 	screen.velocityUnitsId.innerHTML = screen.velocityUnits;
