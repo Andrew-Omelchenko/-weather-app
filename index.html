@@ -12,8 +12,9 @@
 		<header>
 			<h1 class="title">Weather App</h1>
 			<div class="controls">
-				<input id="loc-field" type="text" placeholder="Enter location..." />
+				<input id="loc-field" type="text" list="list-of-cities" placeholder="Enter location..." />
 				<button id="go-button">Go</button>
+				<datalist id="list-of-cities"></datalist>
 				<select id="base-units">
 					<option value="si-base-units">&deg;C, m/s</option>
   					<option value="us-customary-units">&deg;F, mph</option>

@@ -39,9 +39,19 @@ var Screen = function(doc) {
 	this.velocityUnitsId = doc.getElementById("velocity-units");
 	this.directionId = doc.getElementById("direction");
 };
+Screen.prototype.init = function() {
+	var dataList = document.getElementById("list-of-cities");
+	var opt = null;
+	for (var i = 0; i < cities.length; i++) {
+		opt = document.createElement("option");
+		opt.value = cities[i];
+		dataList.appendChild(opt);
+	}
+}
 
 window.onload = function() {
 	currentScreen = new Screen(document);
+	currentScreen.init();
 	currentWeatherObject = new Weather();
 	getWeather("Kyiv");
 	updateScreen(currentScreen, currentWeatherObject);
@@ -103,6 +113,12 @@ function updateScreen(screen, weather) {
 	screen.velocityId.innerHTML = Math.round(weather.velocity);
 	screen.velocityUnitsId.innerHTML = screen.velocityUnits;
 	screen.directionId.innerHTML = toVerbose(weather.direction);
+	if (screen.currentUnits == "us-customary-units") {
+		screen.temperatureId.innerHTML = toFahrenheit(screen.temperatureId.innerHTML);
+		screen.tempMinId.innerHTML = toFahrenheit(screen.tempMinId.innerHTML);
+		screen.tempMaxId.innerHTML = toFahrenheit(screen.tempMaxId.innerHTML);
+		screen.velocityId.innerHTML = toMph(screen.velocityId.innerHTML);
+	}
 };
 function switchUnits(screen, units) {
 	if (screen.currentUnits == units) return;
@@ -153,3 +169,127 @@ function toVerbose(value) {
 	}
 	return "indeed?";
 };
+
+// List of cities
+const cities = [
+	"Kyiv",
+	"Akhtyrka",
+	"Alchevsk",
+	"Antratsyt",
+	"Artemivsk",
+	"Berdiansk",
+	"Berdychiv",
+	"Bila Tserkva",
+	"Bilhorod-Dnistrovskyi",
+	"Boryslav",
+	"Boryspil",
+	"Brianka",
+	"Brovary",
+	"Cherkasy",
+	"Chernihiv",
+	"Chernivtsi",
+	"Chervonohrad",
+	"Dniprodzerzhynsk",
+	"Dnipropetrovsk",
+	"Donetsk",
+	"Drohobych",
+	"Druzhkivka",
+	"Dubno",
+	"Dymytrov",
+	"Dzerzhynsk",
+	"Dzhankoy",
+	"Enerhodar",
+	"Evpatoria",
+	"Fastiv",
+	"Feodosia",
+	"Horlivka",
+	"Illichivsk",
+	"Inhulets",
+	"Ivano-Frankivsk",
+	"Izium",
+	"Izmail",
+	"Kakhovka",
+	"Kalush",
+	"Kamianets-Podilskyi",
+	"Kerch",
+	"Kharkiv",
+	"Khartsyzk",
+	"Kherson",
+	"Khmelnytskyi",
+	"Kirovohrad",
+	"Kolomyia",
+	"Komsomolsk",
+	"Konotop",
+	"Korosten",
+	"Kostiantynivka",
+	"Kotovsk",
+	"Kovel",
+	"Kramatorsk",
+	"Krasnoarmiysk",
+	"Krasnodon",
+	"Krasnyi Luch",
+	"Kremenchuk",
+	"Kryvyi Rih",
+	"Kuznetsovsk",
+	"Lozova",
+	"Lubny",
+	"Luhansk",
+	"Lutsk",
+	"Lviv",
+	"Lysychansk",
+	"Makiivka",
+	"Marhanets",
+	"Mariupol",
+	"Melitopol",
+	"Mukachevo",
+	"Mykolaiv",
+	"Myrhorod",
+	"Nikopol",
+	"Nizhyn",
+	"Nova Kakhovka",
+	"Novohrad-Volynskyi",
+	"Novomoskovsk",
+	"Novovolynsk",
+	"Odesa",
+	"Oleksandriia",
+	"Ordzhonikidze",
+	"Pavlohrad",
+	"Pervomaisk",
+	"Pervomaisk",
+	"Poltava",
+	"Pryluky",
+	"Rivne",
+	"Romny",
+	"Rovenky",
+	"Rubizhne",
+	"Sambir",
+	"Sevastopol",
+	"Severodonetsk",
+	"Shakhtarsk",
+	"Shepetivka",
+	"Shostka",
+	"Simferopol",
+	"Sloviansk",
+	"Smila",
+	"Snizhne",
+	"Stakhanov",
+	"Stryi",
+	"Sumy",
+	"Sverdlovsk",
+	"Svitlovodsk",
+	"Ternopil",
+	"Tokmak",
+	"Torez",
+	"Uman",
+	"Uzhhorod",
+	"Vinnytsia",
+	"Volodymyr-Volynskyi",
+	"Voznesensk",
+	"Yalta",
+	"Yenakiieve",
+	"Yuzhnoukrainsk",
+	"Zaporizhzhya",
+	"Zhmerynka",
+	"Zhovti Vody",
+	"Zhytomyr"
+];
