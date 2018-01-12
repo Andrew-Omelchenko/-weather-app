@@ -66,9 +66,7 @@ window.onload = function() {
 	// add event listener to Clear button
 	document.getElementById("clear-button").addEventListener("click", function(event) {
 		var fld = document.getElementById("loc-field");
-		console.log(fld.value);
 		fld.value = "";
-		console.log(fld.value)
 	});
 
 	// add event listener to select element
