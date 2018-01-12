@@ -118,6 +118,8 @@ function switchUnits(screen, units) {
 	}
 	// TODO: update screen
 	screen.temperatureUnitsId.innerHTML = screen.temperatureUnits;
+	screen.tempMinUnitsId.innerHTML = screen.temperatureUnits;
+	screen.tempMaxUnitsId.innerHTML = screen.temperatureUnits;
 	screen.velocityUnitsId.innerHTML = screen.velocityUnits;
 };
 function toFahrenheit(value) {
