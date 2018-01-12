@@ -173,7 +173,6 @@ function toVerbose(value) {
 // List of cities
 const cities = [
 	"Kyiv",
-	"Akhtyrka",
 	"Alchevsk",
 	"Antratsyt",
 	"Artemivsk",
@@ -251,6 +250,7 @@ const cities = [
 	"Novomoskovsk",
 	"Novovolynsk",
 	"Odesa",
+	"Okhtyrka",
 	"Oleksandriia",
 	"Ordzhonikidze",
 	"Pavlohrad",
