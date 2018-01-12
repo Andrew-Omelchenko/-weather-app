@@ -161,7 +161,6 @@ function toMs(value) {
 function toVerbose(value) {
 	var slice = 360 / 8;
 	var angle = value % 360;
-	var directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 	for (var i = 0; i < directions.length; i++) {
 		if (angle >= slice * (i - 0.5) && angle <= slice * (i + 0.5)) {
 			return directions[i];
@@ -169,6 +168,9 @@ function toVerbose(value) {
 	}
 	return "indeed?";
 };
+
+// List of verbose directions
+const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 
 // List of cities
 const cities = [
